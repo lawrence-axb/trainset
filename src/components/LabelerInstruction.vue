@@ -9,10 +9,16 @@
       </div>
       <div class="col" id="rightInstr">
         <strong>How to Navigate the Graph</strong></br>
-        <kbd>→</kbd> or <kbd>←</kbd> : pan</br>
-        <kbd>SHIFT</kbd> + <kbd>→</kbd> or <kbd>←</kbd> : fast pan</br>
-        <kbd>↑</kbd> or <kbd>↓</kbd>: zoom</br>
+        <kbd>1</kbd> ~ <kbd>9</kbd> : <strong>Label</strong> Corresponding to the number</br>
+        <kbd>D</kbd> or <kbd>A</kbd> : pan</br>
+        <kbd>SHIFT</kbd> + <kbd>D</kbd> or <kbd>A</kbd> : fast pan</br>
+        <kbd>W</kbd> or <kbd>S</kbd>: zoom</br>
         <strong>Click & Drag</strong> the bottom context bar to adjust focus region</br>
+        <strong> Work on Progress </strong>
+        <kbd>←</kbd> Previous Active Series </br>
+        <kbd>→</kbd> Next Active Series </br>
+        <kbd>↑</kbd> Previous Reference Series </br>
+        <kbd>↓</kbd> Next Reference Series </br>
       </div>
     </div>
   </div>

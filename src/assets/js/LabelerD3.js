@@ -853,28 +853,43 @@ export function drawLabeler(plottingApp) {
       plottingApp.shiftKey = false;
     }
     var code = d3.event.keyCode;
-    if (code == 38) {
-      // handle up arrowkey
+    if ((code >= 49) && (code < 59)) {
+      var labels = $("#labelSelect option")
+      if (code - 49 < labels.length) {
+        plottingApp.selectedLabel = labels[code-49].getAttribute('name');
+        $("#updateSelectedLabel").click();
+      }
+    } else if (code == 87) {
+      // W
       transformContext(0, -2);
       d3.event.preventDefault();
-    } else if (code == 40) {
-      // handle down arrowkey
+    } else if (code == 83) {
+      // S
       transformContext(0, 2);
       d3.event.preventDefault();
-    } else if (code === 37) {
-      // handle left arrowkey
+    } else if (code == 65) {
+      // A
       if (plottingApp.shiftKey) {
         transformContext(-9, 0);
       } else {
         transformContext(-1, 0);
       }
-    } else if (code === 39) {
-      // handle right arrowkey
+    } else if (code == 68) {
+      // D
       if (plottingApp.shiftKey) {
         transformContext(9, 0);
       } else {
         transformContext(1, 0);
       }
+    } else if (code == 38) {
+      // up
+    } else if (code == 40) {
+      // down
+    } else if (code == 37) {
+      // left
+    } else if (code == 39) {
+      // right
+
     } else if (code == 76) {
       // handle 'l' press over hoverinfo
       if (plottingApp.hoverTimer && plottingApp.hoverinfo.label) {
