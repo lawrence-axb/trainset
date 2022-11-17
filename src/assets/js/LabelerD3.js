@@ -1,4 +1,5 @@
 import * as d3 from "d3"
+import { max } from "d3";
 import { largestTriangleThreeBucket } from "d3fc-sample";
 const { DateTime } = require("luxon");
 
@@ -882,13 +883,38 @@ export function drawLabeler(plottingApp) {
         transformContext(1, 0);
       }
     } else if (code == 38) {
+      var series = $("#seriesSelect option")
       // up
+      const currentSeries = plottingApp.refSeries;
+      var idx = plottingApp.seriesList.indexOf(currentSeries);
+      plottingApp.refSeries = plottingApp.seriesList[Math.max(0, idx-1)];
+      replot();
+      // $("#triggerReplot").click();
     } else if (code == 40) {
       // down
+      const currentSeries = plottingApp.refSeries;
+      var idx = plottingApp.seriesList.indexOf(currentSeries);
+      plottingApp.refSeries = plottingApp.seriesList[Math.min(plottingApp.seriesList.length-1, idx+1)];
+      replot();
+      // $("#triggerReplot").click();
     } else if (code == 37) {
       // left
+      const currentSeries = plottingApp.selectedSeries;
+      var idx = plottingApp.seriesList.indexOf(currentSeries);
+      plottingApp.selectedSeries = plottingApp.seriesList[Math.max(0, idx-1)];
+      plottingApp.refSeries = plottingApp.seriesList[Math.max(0, idx-1)];
+      plottingApp.data = plottingApp.allData.filter(d => d.series == plottingApp.selectedSeries);
+      replot();
+      // $("#triggerReplot").click();
     } else if (code == 39) {
       // right
+      const currentSeries = plottingApp.selectedSeries;
+      var idx = plottingApp.seriesList.indexOf(currentSeries);
+      plottingApp.selectedSeries = plottingApp.seriesList[Math.min(plottingApp.seriesList.length-1, idx+1)];
+      plottingApp.refSeries = plottingApp.seriesList[Math.min(plottingApp.seriesList.length-1, idx+1)];
+      plottingApp.data = plottingApp.allData.filter(d => d.series == plottingApp.selectedSeries);
+      replot();
+      // $("#triggerReplot").click();
 
     } else if (code == 76) {
       // handle 'l' press over hoverinfo
